@@ -1,7 +1,7 @@
 {
   "schema": "kumwe-package-capabilities/v1",
   "package": "kumwe/contribution",
-  "release": "0.1.0",
+  "release": "0.1.1",
   "namespace": "Kumwe\\Contribution\\",
   "responsibility": "Neutral owners, explicit surface policies and deterministic owner-scoped data registries.",
   "non_responsibilities": [

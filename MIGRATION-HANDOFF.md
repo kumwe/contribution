@@ -35,8 +35,8 @@ target:
   repository: "https://github.com/kumwe/contribution"
   artifact_identity: "kumwe/contribution"
   canonical_namespace_or_abi: "Kumwe\\Contribution"
-  branch: "agent/extract-contribution-primitives-v2"
-  pull_request: "https://github.com/kumwe/contribution/pull/1"
+  branch: "fix/release-integrity-successor-20260907"
+  pull_request: "https://github.com/kumwe/contribution/pull/2"
 ownership:
   responsibility: "Neutral owners, explicit surface policies and deterministic owner-scoped data registries."
   non_responsibilities:
@@ -49,11 +49,11 @@ ownership:
   next_consumer: "kumwe/extension-sdk"
   public_manifests:
     - path: "resources/public-api/v1.json"
-      sha256: "799d99af60e98f8e109a3ed9a3b47eb5f2f9b0e7d88688bd9b71246ed78b116f"
+      sha256: "85202012eef68919fd3eed8894e5e17d7760dbc2a751d65ae244f3a2abea2cf6"
     - path: "resources/capabilities/v1.json"
-      sha256: "1c93955f9eef692deade3a07a8ea7a05436f9515dcdf280c4a6e497948b14841"
+      sha256: "e50defb725e5f03e74480fe8b6965ff020147be57dedd5915a495f6175c2f785"
     - path: "resources/service-map/v1.json"
-      sha256: "705a8744ffde741395d2fdd1efc8d632f3fc34458eecc4baa4b56197b8f96bfb"
+      sha256: "12d4602942c1ebd9f01e5046f7c7f3457f673fb1b655c3b4c95399ff085ef742"
   intentionally_excluded:
     - "App retains executable registry typing/storage/dispatch and trusted active authority."
     - "App retains lifecycle/trust/manifest reconciliation, core/delivery registrars and recovery."
@@ -293,13 +293,14 @@ documentation:
   integration_or_consumer: "docs/integration.md"
   examples:
     - "examples/typed-consumer.php"
-  changelog_record: "CHANGELOG.md / 0.1.0 (proposed release record)"
+  changelog_record: "CHANGELOG.md / 0.1.1 (proposed release record)"
 release_expectations:
-  version_policy: "SemVer; changelog release record; exact pre-1.0 pins; no predicted tag or artifact result."
+  version_policy: "SemVer; 0.1.1 successor under D-GOV-6; fresh verification required after publication."
   expected_artifact_types:
     - "Composer package ZIP"
     - "GitHub source archive"
   required_checks:
+    - "Protected main before publication; exact stable published release reports immutable true."
     - "composer check on PHP 8.5"
     - "Archive installed as dependency in isolated no-dev authoritative consumer"
     - "Independent release/source/artifact/manifest/Packagist verification"
@@ -308,6 +309,7 @@ release_expectations:
 next_task:
   phase_name: "Verify release; separate SDK adoption and successor release; then separate App adoption"
   permitted_only_when:
+    - "The release-integrity successor is published from protected main and independently verified."
     - "Human merge and automated immutable package release."
     - "Independent external attestation verifies that exact artifact and complete handoff."
     - "App adoption also requires a separately human-merged and release-verified SDK successor."
@@ -441,3 +443,15 @@ PHP 8.5.10: behavior/hostile tests, member documentation, architecture, manifest
 while authoring. Run composer check for the complete final package/security/archive consumer gate. The draft PR
 records observed final CI results; final tested commit and archive digests belong in external evidence, not this
 embedded handoff. No release or App integration is claimed.
+
+## Release-integrity successor 0.1.1
+
+This PR follows the published 0.1.0 extraction and changes release automation and version-bound metadata only.
+The existing migration/change-set and NRM identifiers continue to name the same extraction. Runtime source,
+public method contracts, source baseline, consumer maps and the moved/retained test inventory are unchanged.
+
+Before merging, the maintainer protects main and enables GitHub immutable releases. The workflow refuses an
+unprotected release ref before tag/release mutation and verifies exact published immutable release metadata.
+The setting applies only to future releases. Keep 0.1.0 and its tag intact; never move, delete or replace them.
+A fresh independent verifier must attest the successor before dependent publication or App adoption.
+See docs/releasing.md for the setup and verification order.
