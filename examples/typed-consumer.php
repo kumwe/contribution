@@ -8,10 +8,13 @@
 
 declare(strict_types=1);
 
+namespace Kumwe\Contribution\Example;
+
 use Kumwe\Contribution\ContributionDefinition;
 use Kumwe\Contribution\ContributionOwner;
 use Kumwe\Contribution\OwnedContributionRegistry;
 use Kumwe\Contribution\SurfaceIdentifierPolicy;
+use RuntimeException;
 
 /** @var list<string> $arguments */
 $arguments = $_SERVER['argv'] ?? [];
@@ -55,7 +58,8 @@ final readonly class ExampleDeclaration implements ContributionDefinition
 $owner = ContributionOwner::extension('acme/catalog');
 $registry = new OwnedContributionRegistry(SurfaceIdentifierPolicy::dotted('catalog'), 100);
 $registry->register($owner, new ExampleDeclaration());
-if ($registry->definition($owner, 'acme.catalog.summary') !== ['identifier' => 'acme.catalog.summary', 'label' => 'Summary']) {
+$expected = ['identifier' => 'acme.catalog.summary', 'label' => 'Summary'];
+if ($registry->definition($owner, 'acme.catalog.summary') !== $expected) {
     throw new RuntimeException('The registered declaration did not round-trip.');
 }
 $registry->remove($owner);

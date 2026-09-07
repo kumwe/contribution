@@ -175,4 +175,4 @@ jobs:
           gh release create "v$VERSION" \
             --verify-tag \
             --title "v$VERSION" \
-            --notes "Neutral contribution identities and explicit surface policies. Changelog: CHANGELOG.md section $VERSION."
+            --notes "Neutral contribution identities and surface policies. See CHANGELOG.md section $VERSION."
