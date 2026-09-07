@@ -1,0 +1,56 @@
+{
+  "schema": "kumwe-package-capabilities/v1",
+  "package": "kumwe/contribution",
+  "release": "0.1.0",
+  "namespace": "Kumwe\\Contribution\\",
+  "responsibility": "Neutral contribution identity, explicit surface policy and deterministic owner-scoped data registries.",
+  "non_responsibilities": [
+    "Trust, authorization, lifecycle admission and active runtime generation.",
+    "Executable implementation storage, dispatch, routing and rendering.",
+    "Persistence, transactions, canonical JSON and cryptographic digests.",
+    "SDK or App implementation and container registration."
+  ],
+  "capabilities": [
+    {
+      "id": "contribution.identity",
+      "title": "Canonical contributor identity",
+      "description": "Validated owner normalization, exact identity equality and explicit policy checks.",
+      "symbols": [
+        "Kumwe\\Contribution\\ContributionOwner",
+        "Kumwe\\Contribution\\ContributionRejected"
+      ],
+      "documentation": [
+        "docs/public-api.md",
+        "docs/integration.md"
+      ]
+    },
+    {
+      "id": "contribution.policy",
+      "title": "Explicit surface identifier policy",
+      "description": "Bounded dotted and slash grammars with independently configured core exceptions and index kinds.",
+      "symbols": [
+        "Kumwe\\Contribution\\SurfaceIdentifierPolicy"
+      ],
+      "documentation": [
+        "docs/public-api.md",
+        "docs/integration.md"
+      ]
+    },
+    {
+      "id": "contribution.registry",
+      "title": "Owner-scoped declaration snapshots",
+      "description": "Bounded data-only inventory, deterministic ordering, exact-owner lookup/removal and collision refusal.",
+      "symbols": [
+        "Kumwe\\Contribution\\ContributionDefinition",
+        "Kumwe\\Contribution\\ContributionSurface",
+        "Kumwe\\Contribution\\OwnedContributionRegistry"
+      ],
+      "documentation": [
+        "docs/public-api.md",
+        "docs/integration.md"
+      ]
+    }
+  ],
+  "native_requirements": null,
+  "deprecations": []
+}
