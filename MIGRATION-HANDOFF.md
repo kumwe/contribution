@@ -24,9 +24,10 @@ source:
     capability_index_sha256: "87ded886f35f74878ca9eb8db4c36e23d681c4a49891f76dfc3210f385a7ce39"
   semantic_inputs: []
   examined_dependencies:
-    - "SDK v0.2.4 at d0484b8733eaa57d076f567ffa5e997b9564b5fa: exact ContributionOwner, ContributionDefinition, ExtensionIdentifier and SpiPortTest source inspected as extraction inputs; not a runtime dependency."
-    - "App locks conversion v0.1.2 and producer v0.2.0: no contribution identity/registry owner."
-    - "No Kumwe runtime dependency selected; Canonical JSON not needed for bounded snapshots without encoding/digest semantics."
+    - "SDK v0.2.4 source d0484b8733eaa57d076f567ffa5e997b9564b5fa is extraction input only."
+    - "Exact owner/definition/identifier and SpiPortTest source inspected; see docs/integration.md."
+    - "Conversion v0.1.2 and Producer v0.2.0 have no contribution identity/registry owner."
+    - "No Kumwe runtime dependency: bounded snapshots need no canonical encoding or digest."
   active_related_pull_requests:
     - "https://github.com/kumwe/transaction/pull/2"
     - "https://github.com/kumwe/sequence/pull/2"
@@ -37,7 +38,7 @@ target:
   branch: "agent/extract-contribution-primitives-v2"
   pull_request: "https://github.com/kumwe/contribution/pull/1"
 ownership:
-  responsibility: "Neutral contribution identity, explicit surface policy and deterministic owner-scoped data registries."
+  responsibility: "Neutral owners, explicit surface policies and deterministic owner-scoped data registries."
   non_responsibilities:
     - "Trust, authorization, lifecycle admission and active runtime generation."
     - "Executable implementation storage, dispatch, routing and rendering."
@@ -50,14 +51,14 @@ ownership:
     - path: "resources/public-api/v1.json"
       sha256: "799d99af60e98f8e109a3ed9a3b47eb5f2f9b0e7d88688bd9b71246ed78b116f"
     - path: "resources/capabilities/v1.json"
-      sha256: "edc65093c3205678ed6a2c08e14db4c2e077df728e0d55c0800676538d842996"
+      sha256: "1c93955f9eef692deade3a07a8ea7a05436f9515dcdf280c4a6e497948b14841"
     - path: "resources/service-map/v1.json"
-      sha256: "ee59a37a0fc1a5ba43dab2e7f0ae5faf041fdd748b9df89d7e9dd6c6d12c31fd"
+      sha256: "705a8744ffde741395d2fdd1efc8d632f3fc34458eecc4baa4b56197b8f96bfb"
   intentionally_excluded:
-    - "App OwnedRuntimeContributionRegistry executable object typing/storage/dispatch and trusted active registry authority."
-    - "App ExtensionContributionRegistrySet, lifecycle/trust/manifest reconciliation, core/delivery registrars and recovery."
-    - "SDK ExtensionIdentifier retains manifest identity; this package owns the contribution-owner value with its frozen lexical grammar."
-    - "Generic canonical JSON, hashes, native execution, container services and persistence."
+    - "App retains executable registry typing/storage/dispatch and trusted active authority."
+    - "App retains lifecycle/trust/manifest reconciliation, core/delivery registrars and recovery."
+    - "SDK retains ExtensionIdentifier for manifests; Contribution owns its neutral owner value."
+    - "Canonical JSON, hashes, native execution, container services and persistence."
 framework_php:
   composer_package: "kumwe/contribution"
   canonical_namespace: "Kumwe\\Contribution"
@@ -84,7 +85,7 @@ framework_php:
       exceptions:
         - "Kumwe\\Contribution\\ContributionRejected"
       serialization_contract: "identifier()/fromString(): core or normalized vendor/name."
-      compatibility: "CB-CONTRIBUTION-001: assertOwns takes explicit policy; owner grammar preserved, raw input bounded."
+      compatibility: "CB-CONTRIBUTION-001: explicit policy and raw input bound; lexical owner grammar preserved."
     - old_fqcn: "Kumwe\\Extension\\Spi\\Contribution\\ContributionDefinition"
       new_fqcn: "Kumwe\\Contribution\\ContributionDefinition"
       source_path: "src/Spi/Contribution/ContributionDefinition.php"
@@ -253,16 +254,16 @@ framework_php:
       - "tests/Unit/Studio/Application/Projection/StudioContentProjectionServiceTest.php"
       - "tests/Unit/Studio/Application/Rendering/StudioBlockRendererRuntimeTest.php"
     external:
-      - "kumwe/extension-sdk v0.2.4: contribution implementations, assertOwns call sites, scaffold templates and public API fixtures."
+      - "SDK v0.2.4 contribution implementations, assertOwns calls, scaffolds and public fixtures."
   dependency_injection:
     mode: "direct"
     provider: null
     factories: []
     aliases: []
     service_lifetimes:
-      - "Immutable owner/policy values are shareable; mutable registry instances are explicit per-composition state."
+      - "Immutable owner/policy values shareable; mutable registries supplied per composition."
     configuration_keys: []
-    provider_absence_reason: "Contribution-specific brief chooses direct construction; no injected host runtime service is exported."
+    provider_absence_reason: "Direct construction, as specified by Contribution brief; no host runtime service."
 native_cpp: null
 php_extension: null
 tests:
@@ -272,19 +273,18 @@ tests:
     - "tests/Fixture/ReentrantDefinition.php"
     - "tools/test-release-record.sh"
   remain_in_app_or_consumer:
-    - "App tests/Integration/Extension/ExtensionContributionLifecycleIntegrationTest.php"
-    - "App tests/Integration/Extension/ManifestGenerationLifecycleIntegrationTest.php"
-    - "App tests/Functional/Extension/LiveSurfaceContractParityTest.php"
-    - "App OwnedRuntimeContributionRegistry executable-object and lifecycle tests"
-    - "SDK tests/Case/SpiPortTest.php surface-specific definition tests and ExtensionManifestTest.php manifest tests"
+    - "App extension lifecycle, trust, manifest-generation, recovery and surface-parity tests."
+    - "App OwnedRuntimeContributionRegistry executable-object and lifecycle tests."
+    - "SDK SpiPortTest surface-definition tests and ExtensionManifestTest manifest tests."
   split_tests:
-    - "SDK SpiPortTest::testContributionOwnerBoundsItsNamespace, testOwnerBoundaryRejectsRepeatedDotsInTheContributionSuffix, testLegacyOwnerDotSpellingsRemainRepresentable: generic owner/policy cases move here; surface-specific constructor tests stay SDK."
-    - "App generic data-only registry ordering/owner removal assertions move; executable registry tests remain App because that host type remains."
+    - "SDK SpiPortTest generic owner tests move; surface-specific constructor cases remain."
+    - "Exact method names and source ownership appear in docs/integration.md."
+    - "App generic data ordering/owner removal moves; executable registry behavior stays App."
   prohibited_duplicates:
-    - "Old SDK ContributionOwner/ContributionDefinition classes after the separately verified SDK successor adoption."
-    - "App ContributionSurface class declaration and direct unit tests of canonical package internals after App adoption."
+    - "Old SDK owner/definition classes after separately verified SDK successor adoption."
+    - "App ContributionSurface and direct package-unit tests after separate App adoption."
   corpora:
-    - "tests/Case/ContributionTest.php: owner lexical baseline, explicit dotted/slash policy, collision isolation, snapshot/refusal/reentrancy and resource bounds."
+    - "tests/Case/ContributionTest.php: lexical, policy, isolation, snapshots, hostile bounds and reentrancy."
 documentation:
   charter: "CHARTER.md"
   readme: "README.md"
@@ -295,7 +295,7 @@ documentation:
     - "examples/typed-consumer.php"
   changelog_record: "CHANGELOG.md / 0.1.0 (proposed release record)"
 release_expectations:
-  version_policy: "SemVer; changelog release record; exact immutable pins before 1.0; no predicted tag or artifact result."
+  version_policy: "SemVer; changelog release record; exact pre-1.0 pins; no predicted tag or artifact result."
   expected_artifact_types:
     - "Composer package ZIP"
     - "GitHub source archive"
@@ -306,18 +306,18 @@ release_expectations:
   required_registry_or_installer: "Packagist + Composer"
   required_external_attestation: true
 next_task:
-  phase_name: "Independent Contribution release verification, then separate Extension SDK adoption and successor release, then separate App adoption"
+  phase_name: "Verify release; separate SDK adoption and successor release; then separate App adoption"
   permitted_only_when:
-    - "A human merged this package PR and automation published an immutable release."
-    - "An independent external RELEASE-ATTESTATION.yaml verifies that exact artifact and complete handoff."
-    - "Before App changes, the separate SDK successor PR is human-merged and its release independently verified."
+    - "Human merge and automated immutable package release."
+    - "Independent external attestation verifies that exact artifact and complete handoff."
+    - "App adoption also requires a separately human-merged and release-verified SDK successor."
   consumer_repository: "https://github.com/kumwe/extension-sdk"
-  dependency_or_native_change: "Exact-pin verified kumwe/contribution; retire old SDK owner/definition FQCNs and publish a separately verified SDK successor before App exact-pins both releases."
+  dependency_or_native_change: "SDK pins Contribution and retires old types; App then pins both verified releases."
   namespace_or_api_replacements:
-    - "Kumwe\\Extension\\Spi\\Contribution\\ContributionOwner -> Kumwe\\Contribution\\ContributionOwner"
-    - "Kumwe\\Extension\\Spi\\Contribution\\ContributionDefinition -> Kumwe\\Contribution\\ContributionDefinition"
-    - "Kumwe\\App\\Extension\\Contribution\\ContributionSurface -> Kumwe\\Contribution\\ContributionSurface"
-    - "assertOwns(identifier, kind) -> assertOwns(identifier, explicit SurfaceIdentifierPolicy); CB-CONTRIBUTION-001"
+    - "SDK ContributionOwner -> Kumwe\\Contribution\\ContributionOwner"
+    - "SDK ContributionDefinition -> Kumwe\\Contribution\\ContributionDefinition"
+    - "App ContributionSurface -> Kumwe\\Contribution\\ContributionSurface"
+    - "assertOwns(identifier, kind) -> explicit SurfaceIdentifierPolicy; CB-CONTRIBUTION-001"
   files_to_update:
     - "SDK composer.json"
     - "SDK composer.lock"
@@ -332,18 +332,16 @@ next_task:
     - "SDK src/Spi/Contribution/ContributionDefinition.php"
     - "App src/Extension/Contribution/ContributionSurface.php only during later App adoption"
   tests_to_remove:
-    - "Only generic owner/policy unit cases explicitly split from SDK SpiPortTest; preserve SDK surface constructor/manifest assertions."
+    - "SDK generic owner tests listed in integration notes; retain surface/manifest assertions."
   tests_to_retain_or_add:
-    - "App tests/Integration/Extension/ExtensionContributionLifecycleIntegrationTest.php"
-    - "App tests/Integration/Extension/ManifestGenerationLifecycleIntegrationTest.php"
-    - "App tests/Functional/Extension/LiveSurfaceContractParityTest.php"
-    - "App OwnedRuntimeContributionRegistry executable-object and lifecycle tests"
-    - "SDK tests/Case/SpiPortTest.php surface-specific definition tests and ExtensionManifestTest.php manifest tests"
+    - "App extension lifecycle, trust, manifest-generation, recovery and surface-parity tests."
+    - "App OwnedRuntimeContributionRegistry executable-object and lifecycle tests."
+    - "SDK SpiPortTest surface-definition tests and ExtensionManifestTest manifest tests."
   di_or_provisioning_changes:
-    - "No package ConfigProvider or historical alias; host explicitly supplies per-surface policy and registry instances."
-    - "Retain App executable registry/trusted lifecycle composition."
+    - "No provider or historical alias; host supplies explicit per-surface policy/registry."
+    - "App keeps executable registry/trusted lifecycle composition."
   capability_index_changes:
-    - "Regenerate after both exact dependency pins; package owns six FQCNs, SDK retires former owner/definition FQCNs."
+    - "Regenerate after exact pins; package owns six FQCNs, SDK retires owner/definition FQCNs."
   changelog_and_evidence_changes:
     - "KUMWE-MIG-2026-006 and KUMWE-CS-2026-006; NRM-2026-007; enabling-refactor only."
   verification_commands:
@@ -368,7 +366,7 @@ concurrency:
     - "KUMWE-MIG-2026-004"
     - "KUMWE-MIG-2026-005"
   ownership_conflicts:
-    - "SDK currently owns old owner/definition classes; its separate successor migration is a mandatory predecessor of App adoption."
+    - "SDK owner/definition successor migration is required before App adoption."
   integration_train: null
   resolution_rule: "semantic-preservation"
 governance:
@@ -378,45 +376,68 @@ governance:
     - "NRM-2026-007"
   completion_claim: false
 decisions:
-  - "CB-CONTRIBUTION-001: explicit policy replaces kind-string branching; generic/slash suffix validation tightens malformed-input behavior and raw owner input is capped at 1024 bytes."
-  - "No Canonical JSON/SDK dependency and no provider; dependency-free direct values and local data-only registry."
-  - "Three extracted symbols and three newly factored neutral primitives are fully manifested; executable registry remains App."
-  - "Registration rechecks duplicate/capacity after consumer export so reentrancy cannot overwrite another owner or exceed capacity."
+  - "CB-CONTRIBUTION-001: explicit policies; bounded generic/slash suffixes; raw owner limit 1024."
+  - "No Canonical JSON/SDK dependency or provider; direct values and data-only registry."
+  - "Three extracted symbols plus three new neutral primitives; executable registry stays App."
+  - "Recheck duplicates/capacity after export so reentrancy cannot overwrite or overfill."
 blockers:
-  - "Publication/independent attestation are future gates, not claimed complete."
-  - "SDK successor removal of its old owner/definition classes and verified release are required before App adoption."
+  - "Publication and independent attestation are future gates, not completed claims."
+  - "SDK retires old owner/definition classes in a verified successor before App adoption."
 ---
 
 # Contribution migration handoff
 
 ## Migration/implementation summary
 
-Six canonical neutral types factor SDK owner/definition and App surface/data registry behavior. Executable registry, admission, trust, lifecycle and recovery stay App. No SDK/App production file is changed by this Phase 1. See docs/integration.md for the exact ownership and CB-CONTRIBUTION-001 clean break.
+Six canonical neutral types factor SDK owner/definition and App surface/data registry behavior. Executable registry,
+admission, trust, lifecycle and recovery stay App. No SDK/App production file is changed by this Phase 1. See
+docs/integration.md for the exact ownership and CB-CONTRIBUTION-001 clean break.
 
 ## Public API and responsibility
 
-Every public member is documented in docs/public-api.md and reflected into resources/public-api/v1.json. Three capabilities and the explicit no-provider decision are separately manifested. No extra runtime dependency or global service exists.
+Every public member is documented in docs/public-api.md and reflected into resources/public-api/v1.json. Three
+capabilities and the explicit no-provider decision are separately manifested. No extra runtime dependency or global
+service exists.
 
 ## Capability reuse/semantic input review
 
-App's exact lock and capability index identify SDK v0.2.4 as the present owner. Exact released owner/definition/identifier and SpiPortTest source were inspected. Generic owner grammar is preserved; host-specific branches become explicit policies. Canonical JSON is unnecessary because no encoding/digest is implemented. Source input is provenance, not a runtime SDK dependency.
+App's exact lock and capability index identify SDK v0.2.4 as the present owner. Exact released
+owner/definition/identifier and SpiPortTest source were inspected. Generic owner grammar is preserved; host-specific
+branches become explicit policies. Canonical JSON is unnecessary because no encoding/digest is implemented. Source
+input is provenance, not a runtime SDK dependency.
 
 ## Consumer inventory
 
-The source closure includes 68 App production files, 57 test references and 8 other references, fully listed in docs/consumer-inventory.json and the front matter. These are semantic review candidates, never a blind rename list. SDK source/scaffold/public contract consumers must migrate first. No broad App Extension\Contribution namespace is retired because most classes there remain host-owned.
+The source closure includes 68 App production files, 57 test references and 8 other references, fully listed in
+docs/consumer-inventory.json and the front matter. These are semantic review candidates, never a blind rename list.
+SDK source/scaffold/public contract consumers must migrate first. No broad App Extension\Contribution namespace is
+retired because most classes there remain host-owned.
 
 ## Test ownership
 
-Package tests own lexical/policy invariants, deterministic snapshots, hostile bounds, exact-owner isolation and reentrancy refusals. App retains executable registry, manifest/lifecycle/trust/recovery and delivery tests. SDK keeps manifest and concrete surface-definition assertions while moving only generic owner cases. Tests/fixtures never ship in the consumer archive.
+Package tests own lexical/policy invariants, deterministic snapshots, hostile bounds, exact-owner isolation and
+reentrancy refusals. App retains executable registry, manifest/lifecycle/trust/recovery and delivery tests. SDK keeps
+manifest and concrete surface-definition assertions while moving only generic owner cases. Tests/fixtures never ship
+in the consumer archive.
 
 ## Next-task execution notes
 
-Verify this exact immutable release externally. Then a separate SDK PR exact-pins it, removes old owner/definition FQCNs, composes every per-surface policy, regenerates API fixtures/scaffolds and produces a verified successor release. Only then may a separate App task pin both releases, apply the consumer inventory, remove App ContributionSurface, retain executable registries, and regenerate governance/capability evidence. Never add aliases or adopt mutable branches.
+Verify this exact immutable release externally. Then a separate SDK PR exact-pins it, removes old owner/definition
+FQCNs, composes every per-surface policy, regenerates API fixtures/scaffolds and produces a verified successor
+release. Only then may a separate App task pin both releases, apply the consumer inventory, remove App
+ContributionSurface, retain executable registries, and regenerate governance/capability evidence. Never add aliases or
+adopt mutable branches.
 
 ## Drift check
 
-Compare current App with baseline 960ce8ec00cf724a7cae03e5ba09c4852c9ab54e and SDK with d0484b8733eaa57d076f567ffa5e997b9564b5fa; rerun the inventory search and compare all portable behavior/signatures. New portable behavior requires a separate upstream release before consumer adoption. Preserve all concurrent dependencies and regeneration changes; never hand-edit lockfiles or resolve whole files with ours/theirs.
+Compare current App with baseline 960ce8ec00cf724a7cae03e5ba09c4852c9ab54e and SDK with
+d0484b8733eaa57d076f567ffa5e997b9564b5fa; rerun the inventory search and compare all portable behavior/signatures. New
+portable behavior requires a separate upstream release before consumer adoption. Preserve all concurrent dependencies
+and regeneration changes; never hand-edit lockfiles or resolve whole files with ours/theirs.
 
 ## Validation recipe and observed local results
 
-PHP 8.5.10: behavior/hostile tests, member documentation, architecture, manifest reflection and PHPStan max passed while authoring. Run composer check for the complete final package/security/archive consumer gate. The draft PR records observed final CI results; final tested commit and archive digests belong in external evidence, not this embedded handoff. No release or App integration is claimed.
+PHP 8.5.10: behavior/hostile tests, member documentation, architecture, manifest reflection and PHPStan max passed
+while authoring. Run composer check for the complete final package/security/archive consumer gate. The draft PR
+records observed final CI results; final tested commit and archive digests belong in external evidence, not this
+embedded handoff. No release or App integration is claimed.

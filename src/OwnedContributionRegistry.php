@@ -61,7 +61,7 @@ final class OwnedContributionRegistry implements ContributionSurface
         $document = $definition->toArray();
         foreach (array_keys($document) as $key) {
             if (!is_string($key)) {
-                throw new ContributionRejected('invalid_definition', 'Definition document requires string field names.');
+                throw new ContributionRejected('invalid_definition', 'Definition requires string field names.');
             }
         }
         $nodes = 0;

@@ -3,7 +3,7 @@
   "app_baseline": "960ce8ec00cf724a7cae03e5ba09c4852c9ab54e",
   "sdk_version": "v0.2.4",
   "sdk_commit": "d0484b8733eaa57d076f567ffa5e997b9564b5fa",
-  "method": "rg -l across src tests config bootstrap examples tools docs for ContributionOwner/ContributionDefinition/ContributionSurface/OwnedRuntimeContributionRegistry; references require semantic review, not blind replacement.",
+  "method": "rg -l across App source/tests/config/bootstrap/examples/tools/docs; semantic review required.",
   "app_code": [
     "src/Administrator/Automation/ContributedJobFormCompiler.php",
     "src/Administrator/Http/Handler/AdministratorDashboardHandler.php",

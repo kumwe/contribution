@@ -3,7 +3,7 @@
   "package": "kumwe/contribution",
   "release": "0.1.0",
   "namespace": "Kumwe\\Contribution\\",
-  "responsibility": "Neutral contribution identity, explicit surface policy and deterministic owner-scoped data registries.",
+  "responsibility": "Neutral owners, explicit surface policies and deterministic owner-scoped data registries.",
   "non_responsibilities": [
     "Trust, authorization, lifecycle admission and active runtime generation.",
     "Executable implementation storage, dispatch, routing and rendering.",
@@ -39,7 +39,7 @@
     {
       "id": "contribution.registry",
       "title": "Owner-scoped declaration snapshots",
-      "description": "Bounded data-only inventory, deterministic ordering, exact-owner lookup/removal and collision refusal.",
+      "description": "Bounded data inventory with stable order, owner lookup/removal and collision refusal.",
       "symbols": [
         "Kumwe\\Contribution\\ContributionDefinition",
         "Kumwe\\Contribution\\ContributionSurface",
