@@ -17,7 +17,7 @@ App baseline: `960ce8ec00cf724a7cae03e5ba09c4852c9ab54e`. Locked SDK: v0.2.4 at 
 
 assertOwns(string, string kind) becomes assertOwns(string, SurfaceIdentifierPolicy). Surface names no longer choose grammar/exemptions. Graphical dotted rules use dotted(surface); typed integration IDs use versioned:true; core capability exemption uses unnamespacedCore:true only on that surface. Slash document surfaces configure exact core namespace aliases and index prefixes explicitly. Separate policies describe indexed/unindexed forms; nonempty kind lists require a prefix.
 
-Former prefix-only checks admitted unbounded/malformed suffixes. This release deliberately refuses whitespace/controls, empty/trailing/repeated suffix separators, path traversal, illegal punctuation and excess size. Owner normalization/segment grammar and safe namespace behavior remain. Data registry exports are bounded detached snapshots, not executable objects.
+Former prefix-only checks admitted unbounded/malformed suffixes. This release deliberately refuses whitespace/controls, empty/trailing/repeated suffix separators, path traversal, illegal punctuation and excess size. Raw owner input now has a 1024-byte bound before normalization. Owner normalization/segment grammar and safe namespace behavior remain. Data registry exports are bounded detached snapshots, not executable objects.
 
 ## Sequenced follow-up
 

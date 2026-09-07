@@ -37,8 +37,10 @@ final class ContributionTest extends TestCase
         $this->assertFalse(ContributionOwner::core()->equals(ContributionOwner::extension('a/b')), 'Distinct owners.');
         $maximum = str_repeat('a', 63) . '/' . str_repeat('b', 63);
         $this->assertSame($maximum, ContributionOwner::extension($maximum)->identifier(), 'Maximum accepted.');
-        foreach (['', 'Core', ' core ', 'a', '/a', 'a/', 'a/b/c', '-a/b', "a/b\nc", 'é/b',
-            str_repeat('a', 64) . '/b', str_repeat(' ', 1025)] as $invalid) {
+        foreach (
+            ['', 'Core', ' core ', 'a', '/a', 'a/', 'a/b/c', '-a/b', "a/b\nc", 'é/b',
+            str_repeat('a', 64) . '/b', str_repeat(' ', 1025)] as $invalid
+        ) {
             $this->assertThrows(
                 static fn () => ContributionOwner::fromString($invalid),
                 ContributionRejected::class,
@@ -64,9 +66,11 @@ final class ContributionTest extends TestCase
         ContributionOwner::core()->assertOwns('content.read', $corePolicy);
         ContributionOwner::extension('a./b.')->assertOwns('a..b..item', $strict);
         $this->assertSame('capability', $strict->surface(), 'Explicit diagnostic surface identity.');
-        foreach (['acme.blog.', 'acme.blog..x', 'acme.blog.x.', 'acme.blog.x@1', 'acme.blog.x/y',
+        foreach (
+            ['acme.blog.', 'acme.blog..x', 'acme.blog.x.', 'acme.blog.x@1', 'acme.blog.x/y',
             'acme.blog. x', 'acme.blog.x y', "acme.blog.x\n", 'other.blog.x', 'acme.blog-extra.x',
-            str_repeat('x', 257), '', 'acme.blog.é'] as $invalid) {
+            str_repeat('x', 257), '', 'acme.blog.é'] as $invalid
+        ) {
             $this->assertThrows(
                 static fn () => $owner->assertOwns($invalid, $strict),
                 ContributionRejected::class,
@@ -99,8 +103,10 @@ final class ContributionTest extends TestCase
         $policy = SurfaceIdentifierPolicy::slash('documents', ['core', 'design.core'], ['block', 'pattern']);
         ContributionOwner::core()->assertOwns('block design.core/hero', $policy);
         ContributionOwner::extension('acme/blog')->assertOwns('pattern acme.blog/card', $policy);
-        foreach (['block other/hero', 'unknown core/hero', 'core/hero', 'block core/', 'block core/../hero',
-            'block core/hero/extra', 'block  core/hero'] as $invalid) {
+        foreach (
+            ['block other/hero', 'unknown core/hero', 'core/hero', 'block core/', 'block core/../hero',
+            'block core/hero/extra', 'block  core/hero'] as $invalid
+        ) {
             $this->assertThrows(
                 static fn () => ContributionOwner::core()->assertOwns($invalid, $policy),
                 ContributionRejected::class,
@@ -255,8 +261,10 @@ final class ContributionTest extends TestCase
         $recursive = [];
         $recursive['self'] = &$recursive;
         $large = array_fill(0, 18, str_repeat('a', 65536));
-        foreach ([new \stdClass(), static fn () => null, INF, NAN, $recursive, str_repeat('a', 65537),
-            $large, array_fill(0, 10001, null)] as $invalid) {
+        foreach (
+            [new \stdClass(), static fn () => null, INF, NAN, $recursive, str_repeat('a', 65537),
+            $large, array_fill(0, 10001, null)] as $invalid
+        ) {
             $this->assertThrows(
                 static fn () => $registry->register($owner, new Definition('core.bad', ['value' => $invalid])),
                 ContributionRejected::class,

@@ -55,7 +55,7 @@ Final mutable registry implementing ContributionSurface. No executable implement
 | `ownedBy(ContributionOwner $owner): array` | Exact owner's snapshots in stable order, empty when absent. |
 | `remove(ContributionOwner $owner): void` | Remove exact matches only; missing owner no-op, remaining order preserved, capacity reusable. |
 
-Core exceptions and dotted owner collisions cannot overwrite keys: duplicates always fail, including same-owner registration. Data copies recursively detach references; returned arrays cannot mutate stored state. Owner strings do not authenticate callers.
+Core exceptions and dotted owner collisions cannot overwrite keys: duplicates always fail, including same-owner registration. Commit conditions are rechecked after a consumer's toArray() call: a reentrant registration cannot overwrite an inner entry or exceed capacity. A rejected outer registration performs no own mutation; independent side effects caused by consumer code are not rolled back. Data copies recursively detach references; returned arrays cannot mutate stored state. Owner strings do not authenticate callers.
 
 ## `Kumwe\Contribution\ContributionRejected`
 

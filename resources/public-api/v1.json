@@ -1,0 +1,446 @@
+{
+    "schema": "kumwe-package-public-api/v1",
+    "package": "kumwe/contribution",
+    "release": "0.1.0",
+    "namespace": "Kumwe\\Contribution\\",
+    "symbols": {
+        "Kumwe\\Contribution\\ContributionDefinition": {
+            "kind": "interface",
+            "stability": "stable",
+            "file": "src/ContributionDefinition.php",
+            "abstract": false,
+            "final": false,
+            "readonly": false,
+            "parent": null,
+            "interfaces": [],
+            "constants": {},
+            "properties": {},
+            "methods": {
+                "identifier": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [],
+                    "return": "string"
+                },
+                "toArray": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [],
+                    "return": "array"
+                }
+            },
+            "deprecated": null
+        },
+        "Kumwe\\Contribution\\ContributionOwner": {
+            "kind": "class",
+            "stability": "stable",
+            "file": "src/ContributionOwner.php",
+            "abstract": false,
+            "final": true,
+            "readonly": true,
+            "parent": null,
+            "interfaces": [],
+            "constants": {
+                "CORE": {
+                    "type": "string"
+                }
+            },
+            "properties": {},
+            "methods": {
+                "assertOwns": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [
+                        {
+                            "name": "identifier",
+                            "type": "string",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        },
+                        {
+                            "name": "policy",
+                            "type": "Kumwe\\Contribution\\SurfaceIdentifierPolicy",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "void"
+                },
+                "core": {
+                    "visibility": "public",
+                    "static": true,
+                    "parameters": [],
+                    "return": "Kumwe\\Contribution\\ContributionOwner"
+                },
+                "equals": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [
+                        {
+                            "name": "other",
+                            "type": "Kumwe\\Contribution\\ContributionOwner",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "bool"
+                },
+                "extension": {
+                    "visibility": "public",
+                    "static": true,
+                    "parameters": [
+                        {
+                            "name": "identifier",
+                            "type": "string",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "Kumwe\\Contribution\\ContributionOwner"
+                },
+                "fromString": {
+                    "visibility": "public",
+                    "static": true,
+                    "parameters": [
+                        {
+                            "name": "identifier",
+                            "type": "string",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "Kumwe\\Contribution\\ContributionOwner"
+                },
+                "identifier": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [],
+                    "return": "string"
+                },
+                "namespace": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [],
+                    "return": "string"
+                }
+            },
+            "deprecated": null
+        },
+        "Kumwe\\Contribution\\ContributionRejected": {
+            "kind": "class",
+            "stability": "stable",
+            "file": "src/ContributionRejected.php",
+            "abstract": false,
+            "final": true,
+            "readonly": false,
+            "parent": "InvalidArgumentException",
+            "interfaces": [
+                "Stringable",
+                "Throwable"
+            ],
+            "constants": {},
+            "properties": {
+                "reason": {
+                    "type": "string",
+                    "static": false,
+                    "readonly": true
+                }
+            },
+            "methods": {
+                "__construct": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [
+                        {
+                            "name": "reason",
+                            "type": "string",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        },
+                        {
+                            "name": "message",
+                            "type": "string",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": null
+                }
+            },
+            "deprecated": null
+        },
+        "Kumwe\\Contribution\\ContributionSurface": {
+            "kind": "interface",
+            "stability": "stable",
+            "file": "src/ContributionSurface.php",
+            "abstract": false,
+            "final": false,
+            "readonly": false,
+            "parent": null,
+            "interfaces": [],
+            "constants": {},
+            "properties": {},
+            "methods": {
+                "ownedBy": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [
+                        {
+                            "name": "owner",
+                            "type": "Kumwe\\Contribution\\ContributionOwner",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "array"
+                },
+                "remove": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [
+                        {
+                            "name": "owner",
+                            "type": "Kumwe\\Contribution\\ContributionOwner",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "void"
+                }
+            },
+            "deprecated": null
+        },
+        "Kumwe\\Contribution\\OwnedContributionRegistry": {
+            "kind": "class",
+            "stability": "stable",
+            "file": "src/OwnedContributionRegistry.php",
+            "abstract": false,
+            "final": true,
+            "readonly": false,
+            "parent": null,
+            "interfaces": [
+                "Kumwe\\Contribution\\ContributionSurface"
+            ],
+            "constants": {},
+            "properties": {},
+            "methods": {
+                "__construct": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [
+                        {
+                            "name": "policy",
+                            "type": "Kumwe\\Contribution\\SurfaceIdentifierPolicy",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        },
+                        {
+                            "name": "maximumEntries",
+                            "type": "int",
+                            "optional": true,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": null
+                },
+                "definition": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [
+                        {
+                            "name": "owner",
+                            "type": "Kumwe\\Contribution\\ContributionOwner",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        },
+                        {
+                            "name": "identifier",
+                            "type": "string",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "?array"
+                },
+                "definitions": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [],
+                    "return": "array"
+                },
+                "entries": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [],
+                    "return": "array"
+                },
+                "ownedBy": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [
+                        {
+                            "name": "owner",
+                            "type": "Kumwe\\Contribution\\ContributionOwner",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "array"
+                },
+                "register": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [
+                        {
+                            "name": "owner",
+                            "type": "Kumwe\\Contribution\\ContributionOwner",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        },
+                        {
+                            "name": "definition",
+                            "type": "Kumwe\\Contribution\\ContributionDefinition",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "void"
+                },
+                "remove": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [
+                        {
+                            "name": "owner",
+                            "type": "Kumwe\\Contribution\\ContributionOwner",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "void"
+                }
+            },
+            "deprecated": null
+        },
+        "Kumwe\\Contribution\\SurfaceIdentifierPolicy": {
+            "kind": "class",
+            "stability": "stable",
+            "file": "src/SurfaceIdentifierPolicy.php",
+            "abstract": false,
+            "final": true,
+            "readonly": true,
+            "parent": null,
+            "interfaces": [],
+            "constants": {},
+            "properties": {},
+            "methods": {
+                "assertOwns": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [
+                        {
+                            "name": "owner",
+                            "type": "Kumwe\\Contribution\\ContributionOwner",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        },
+                        {
+                            "name": "identifier",
+                            "type": "string",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "void"
+                },
+                "dotted": {
+                    "visibility": "public",
+                    "static": true,
+                    "parameters": [
+                        {
+                            "name": "surface",
+                            "type": "string",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        },
+                        {
+                            "name": "versioned",
+                            "type": "bool",
+                            "optional": true,
+                            "variadic": false,
+                            "by_reference": false
+                        },
+                        {
+                            "name": "unnamespacedCore",
+                            "type": "bool",
+                            "optional": true,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "Kumwe\\Contribution\\SurfaceIdentifierPolicy"
+                },
+                "slash": {
+                    "visibility": "public",
+                    "static": true,
+                    "parameters": [
+                        {
+                            "name": "surface",
+                            "type": "string",
+                            "optional": false,
+                            "variadic": false,
+                            "by_reference": false
+                        },
+                        {
+                            "name": "coreNamespaces",
+                            "type": "array",
+                            "optional": true,
+                            "variadic": false,
+                            "by_reference": false
+                        },
+                        {
+                            "name": "indexKinds",
+                            "type": "array",
+                            "optional": true,
+                            "variadic": false,
+                            "by_reference": false
+                        }
+                    ],
+                    "return": "Kumwe\\Contribution\\SurfaceIdentifierPolicy"
+                },
+                "surface": {
+                    "visibility": "public",
+                    "static": false,
+                    "parameters": [],
+                    "return": "string"
+                }
+            },
+            "deprecated": null
+        }
+    },
+    "extension_points": [
+        "Kumwe\\Contribution\\ContributionDefinition",
+        "Kumwe\\Contribution\\ContributionSurface"
+    ],
+    "digest_of": "src"
+}
