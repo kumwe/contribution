@@ -7,74 +7,76 @@
       "php",
       "tests/run.php",
       "--list-json"
-    ]
+    ],
+    "namespace_prefix": "Kumwe\\Contribution\\Tests\\"
   },
   "exports": {
     "Kumwe\\Contribution\\ContributionDefinition": {
       "behavior": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testSnapshotsDetachReferencesAndImplementations"
+        "Case\\ContributionTest::testSnapshotsDetachReferencesAndImplementations"
       ],
       "boundary": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testHostileDefinitionDocuments"
+        "Case\\ContributionTest::testHostileDefinitionDocuments"
       ],
-      "note": "The package owns the port contract; listed cases exercise its signature or consumer path. Concrete host adapter behavior remains with its implementing repository."
+      "note": "Owns port signature/consumer contract; concrete adapters own their implementation behavior."
     },
     "Kumwe\\Contribution\\ContributionOwner": {
       "behavior": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testOwnerCorpus"
+        "Case\\ContributionTest::testOwnerCorpus"
       ],
       "boundary": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testOwnerCorpus",
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testDottedPolicyIsolation"
+        "Case\\ContributionTest::testOwnerCorpus",
+        "Case\\ContributionTest::testDottedPolicyIsolation"
       ]
     },
     "Kumwe\\Contribution\\ContributionRejected": {
       "behavior": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testOwnerCorpus",
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testHostileDefinitionDocuments"
+        "Case\\ContributionTest::testOwnerCorpus",
+        "Case\\ContributionTest::testHostileDefinitionDocuments"
       ],
       "boundary": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testHostileDefinitionDocuments"
+        "Case\\ContributionTest::testHostileDefinitionDocuments"
       ]
     },
     "Kumwe\\Contribution\\ContributionSurface": {
       "behavior": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testRegistryOwnershipOrderingAndCapacity"
+        "Case\\ContributionTest::testRegistryOwnershipOrderingAndCapacity"
       ],
       "boundary": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testReentrantRegistrationRechecksCommitConditions"
+        "Case\\ContributionTest::testReentrantRegistrationRechecksCommitConditions"
       ],
-      "note": "The package owns the port contract; listed cases exercise its signature or consumer path. Concrete host adapter behavior remains with its implementing repository."
+      "note": "Owns port signature/consumer contract; concrete adapters own their implementation behavior."
     },
     "Kumwe\\Contribution\\OwnedContributionRegistry": {
       "behavior": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testRegistryOwnershipOrderingAndCapacity",
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testSnapshotsDetachReferencesAndImplementations"
+        "Case\\ContributionTest::testRegistryOwnershipOrderingAndCapacity",
+        "Case\\ContributionTest::testSnapshotsDetachReferencesAndImplementations"
       ],
       "boundary": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testHostileDefinitionDocuments",
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testReentrantRegistrationRechecksCommitConditions"
+        "Case\\ContributionTest::testHostileDefinitionDocuments",
+        "Case\\ContributionTest::testReentrantRegistrationRechecksCommitConditions"
       ]
     },
     "Kumwe\\Contribution\\SurfaceIdentifierPolicy": {
       "behavior": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testDottedPolicyIsolation"
+        "Case\\ContributionTest::testDottedPolicyIsolation"
       ],
       "boundary": [
-        "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testSlashPolicyAndConfigurationBounds"
+        "Case\\ContributionTest::testSlashPolicyAndConfigurationBounds"
       ]
     }
   },
   "conformance": {
     "status": "owned",
-    "rationale": "Owner grammar, explicit surface-policy and detached registry conformance cases are embedded in the package tests.",
+    "rationale": "Embedded owner, explicit surface-policy and detached-registry conformance cases.",
     "tests": [
-      "Kumwe\\Contribution\\Tests\\Case\\ContributionTest::testOwnerCorpus"
+      "Case\\ContributionTest::testOwnerCorpus"
     ],
     "corpora": []
   },
   "architecture": [
-    "tools/verify-architecture.php"
+    "tools/verify-architecture.php",
+    "tools/verify-boundary-tokens.php"
   ],
   "host": {
     "repository": "kumwe/app",
