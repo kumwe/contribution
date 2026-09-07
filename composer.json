@@ -56,8 +56,10 @@
       "@cs",
       "@analyse",
       "@test",
-      "@clean-consumer"
-    ]
+      "@clean-consumer",
+      "@release:integrity"
+    ],
+    "release:integrity": "bash tools/test-release-integrity.sh"
   },
   "config": {
     "sort-packages": true
