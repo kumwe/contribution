@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- Add live package, CI, PHP and license badges and current installation and Core integration guidance.
+- Replace completed handover prose with a production release contract and update archive verification.
+
 ## 0.1.1
 
 - Unify PR and post-rebase release gates, dynamic release identity, tested publication retries,
