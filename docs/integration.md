@@ -1,6 +1,7 @@
-# Extraction and adoption
+# Core contract and integration
 
-App baseline: `960ce8ec00cf724a7cae03e5ba09c4852c9ab54e`. Locked SDK: v0.2.4 at
+Historical source baseline (verify drift against current Core): `960ce8ec00cf724a7cae03e5ba09c4852c9ab54e`.
+Examined SDK: v0.2.4 at
 `d0484b8733eaa57d076f567ffa5e997b9564b5fa`. Exact released ContributionOwner, ContributionDefinition and
 ExtensionIdentifier source was inspected. App capability-index digest:
 `87ded886f35f74878ca9eb8db4c36e23d681c4a49891f76dfc3210f385a7ce39`.
@@ -19,8 +20,7 @@ ExtensionIdentifier source was inspected. App capability-index digest:
 - SDK STUDIO_KINDS/GRAPHICAL_KINDS/capability exception: Explicit SurfaceIdentifierPolicy chosen per consumer; no
   host-specific list in package.
 - App ExtensionContributionRegistrySet, CanonicalManifestActivator/Interpreter, OwnedExtensionBindingRegistrar,
-  core/delivery registrars: Retained App authority, with canonical imports and explicit policy composition only in
-  later adoption.
+  core/delivery registrars: Retained App authority, with canonical imports and explicit policy composition.
 
 ## Clean break CB-CONTRIBUTION-001
 
@@ -39,20 +39,22 @@ The generic SDK SpiPortTest methods to split are testContributionOwnerBoundsItsN
 testOwnerBoundaryRejectsRepeatedDotsInTheContributionSuffix and testLegacyOwnerDotSpellingsRemainRepresentable.
 Keep their concrete surface-constructor assertions in SDK; package tests own the generic owner/policy invariants.
 
-## Sequenced follow-up
+## Consumer verification
 
-1. Human merge, automated release, then external verification of archive/Packagist/manifests/clean consumer. This
-   Phase 1 does not claim publication.
-2. Separate SDK task: exact-pin verified Contribution; replace all owner/definition imports/signatures; remove old SDK
-   source classes and implementation tests; supply explicit policies at every assertOwns call; rebuild public API
-   fixtures/scaffold templates/schema checks. Release and independently verify the SDK successor. No aliases.
-3. Separate App task: exact-pin both verified releases, update Composer via supported tooling, replace canonical
-   imports, migrate ContributionSurface, compose explicit policies and retain host active/executable registries. No
-   retired SDK FQCN may remain installed. Update capability index, migration/governance records and changelog/evidence
-   atomically.
-4. Retain App lifecycle/admission/trust, active-generation, recovery, route/navigation, persistence and rendering
-   integration tests. Split only generic owner/data assertions upstream; executable-registry tests stay with App.
+Core consumes the canonical types directly or through a compatible Extension SDK release. Exact-pin the verified
+package dependencies and regenerate Composer locks and the capability index from the installed graph. SDK owner and
+definition types must have one canonical owner; do not add aliases, remaps or copied implementations.
 
-SDK source is an extraction input, not a runtime dependency. No downstream consumer may treat this package PR as
-completed SDK/App migration. Exact consumer inventory is shipped in docs/consumer-inventory.json; refresh it and
-compare source baselines before adoption.
+When replacing historical types, review the source inventory and current API/scaffold fixtures, supply explicit
+policies at each assertOwns call, and preserve active executable registries and trusted lifecycle composition.
+Do not treat the neutral snapshot registry as a replacement for an executable runtime registry.
+
+Core retains lifecycle/admission/trust, active-generation, recovery, route/navigation, persistence and rendering
+integration tests. Package tests own lexical/policy, snapshot, isolation and hostile-bound invariants. SDK retains
+manifest and concrete surface-constructor tests. Remove implementation-only tests with their retired implementation
+after verified replacement; split mixed assertions by responsibility.
+
+The SDK source baseline is provenance, not a runtime dependency. The exact source closure is retained in
+[consumer-inventory.json](consumer-inventory.json); compare current consumers before changing their imports.
+Follow [releasing](releasing.md) for publication and independent artifact verification requirements. Published package
+availability does not establish Core integration completion.
