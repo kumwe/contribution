@@ -357,7 +357,9 @@ consumer_contract:
   - App extension lifecycle/trust/recovery and route/navigation integration suites
 ---
 
-# Package contract
+# Release contract
+
+## Package contract
 
 This record preserves source provenance, exact manifest identities and consumer qualification requirements.
 Migration/change-set IDs are stable evidence references. [Integration](integration.md) defines the current Core
